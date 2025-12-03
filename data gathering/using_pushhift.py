@@ -8,13 +8,16 @@ class Data:
         self.all_ids = []
         self.current_before = self.ts(self.start_time_str)
         self.job_keywords = [
-            "job", "career", "work", "hiring", "employment",
-            "laid off", "layoff", "salary", "profession"
+            "careers", "career", "jobs", "job", "industry", "industries", "role", "roles", "work", "workforce", "task", "tasks"
         ]
         self.ai_keywords = [
-    "ai", "artificial intelligence", "machine learning", "ml",
-    "deep learning", "gpt", "chatgpt", "llm", "gemini",
-    "claude", "midjourney", "dalle", "bard", "copilot",
+    "AI", "Artificial Intelligence", "GPT", "ChatGPT", "Claude", "LLM", "LLMS", "Bing", "LLAMA", "Midjourney", "DALL-E", "generative AI", "Gemini", "Copilot", "Perplexity AI", "Canva", "DeepL", "QuillBot", "Remove.bg", "Grammarly",
+"Character.ai", "Quizizz", "Zapier", "Microsoft Copilot", "CapCut", "DeepAI", "Hugging Face", "Poe", "Suno",
+"ElevenLabs", "InVideo", "Leonardo", "Replit", "Consensus", "Janitor AI", "Runway", "Luma AI", "Filmora", "Otter.ai",
+"DeepSeek", "Stable Diffusion", "Grok", "Microsoft Designer", "you.com", "Synthesia", "Descript", "HeyGen", "Jasper",
+"OpusClip", "Play.ht", "Cursor", "Wordtune", "WriteSonic", "Copy.ai", "Murf.ai", "Pictory", "Pi", "Google AI Studio",
+"Krisp", "Fliki", "Beautiful.ai", "SlidesAI", "NotebookLM", "Groq", "Lumen5", "Rytr", "HyperWrite", "Resemble",
+"Tabnine", "Mem"
         ]
         self.anxiety_keywords = [
     "afraid", "scared", "worried", "anxious",
@@ -41,11 +44,12 @@ class Data:
         return int(datetime.datetime.strptime(date_str, "%Y-%m-%d").timestamp())
     def match_keywords(self, text):
         text = text.lower()
-        job_hit = any(k in text for k in self.job_keywords)
-        ai_hit  = any(k in text for k in self.ai_keywords)
+        job_hit = any(k in text for k in [x.lower() for x in self.job_keywords])
+        ai_hit  = any(k in text for k in [x.lower() for x in self.ai_keywords])
         exclude_hit = any(bad in text for bad in self.exclude_keywords)
         return job_hit and ai_hit and (not exclude_hit)
     def start_gathering(self):
+        self.dict = dict()
         while True:
             url = (
                 "https://api.pullpush.io/reddit/search/submission/"
@@ -60,8 +64,9 @@ class Data:
                 text = (post.get("title", "") + post.get("text", "")).lower()
                 if self.match_keywords(text):
                     self.all_ids.append(post["id"])
+                    self.dict[post["id"]] = [post.get("text", ""), post.get("title", "")]
             self.current_before = data[-1]["created_utc"]
             print("Total matching posts:", len(self.all_ids))
             if len(self.all_ids) >= self.amount:
                 break
-        return list(set(self.all_ids))
+        return list(set(self.all_ids)), self.dict
