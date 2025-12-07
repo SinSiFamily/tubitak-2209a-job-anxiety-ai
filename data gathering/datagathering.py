@@ -9,7 +9,7 @@ load_dotenv()
 id = os.getenv("id")
 secret = os.getenv("secret")
 
-data = Data(amount=None, start_date="2022-01-01", end_date="2025-12-01", subreddit="openai")
+data = Data(amount=None, start_date="2020-01-01", end_date="2025-12-01", subreddit="gamedev")
 all_ids, dicto = data.start_gathering()
 
 reddit = praw.Reddit(
@@ -23,12 +23,13 @@ for pid in all_ids:
         post = reddit.submission(id=pid)
         post.comments.replace_more(limit=0)
         comments = [c.body for c in post.comments.list()]
-        if len(comments) < 10:
+        if len(comments) < 5:
+            print("Skipping low quality posts")
             continue
         title = dicto[pid][1] if post.title == "[deleted by user]" or post.title == "[ Removed by moderator ]" else post.title
         text = dicto[pid][0] if post.selftext == "[removed]" else post.selftext
         for c in comments:
-            if c != "[removed]" or c != "[deleted]":
+            if c != "[removed]" and c != "[deleted]":
                 rows.append({
                     "post_id": pid,
                     "subreddit": str(post.subreddit),
@@ -41,4 +42,4 @@ for pid in all_ids:
     except Exception as e:
         print("Error:", pid, e)
 df = pd.DataFrame(rows)
-df.to_csv("tubitak-2209a-job-anxiety-ai/data gathering/reddit_data.csv", index=False)
+df.to_csv("tubitak-2209a-job-anxiety-ai/data gathering/gamedev_data.csv", index=False)

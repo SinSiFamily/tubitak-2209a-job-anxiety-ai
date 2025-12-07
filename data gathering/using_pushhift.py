@@ -1,6 +1,6 @@
 import requests
 import datetime
-
+import re
 class Data:
     def __init__(self, amount, start_date, end_date, subreddit):
         self.amount = amount
@@ -12,7 +12,7 @@ class Data:
         self.job_keywords = [
             "job", "jobs", "career", "careers", "employment", "employed",
             "unemployment", "layoff", "laid off", "hiring",
-            "job market", "workplace", "workforce"
+            "job market", "workplace", "workforce", "working", "works", "worked"
         ]
         self.ai_keywords = [
             "AI", "Artificial Intelligence", "GPT", "ChatGPT", "Claude", "LLM", "LLMS",
@@ -39,10 +39,12 @@ class Data:
         return int(datetime.datetime.strptime(s, "%Y-%m-%d").timestamp())
     def match_keywords(self, text):
         t = text.lower()
-        job_hit = any(k in t for k in self.job_keywords)
-        ai_hit = any(k.lower() in t for k in self.ai_keywords)
-        exclude_hit = any(k in t for k in self.exclude_keywords)
-        return job_hit and ai_hit and not exclude_hit
+        def word_hit(keywords):
+            return any(re.search(rf"\b{re.escape(k.lower())}\b", t) for k in keywords)
+        job_hit = word_hit(self.job_keywords)
+        ai_hit = word_hit(self.ai_keywords)
+        exclude_hit = word_hit(self.exclude_keywords)
+        return job_hit and ai_hit
     def start_gathering(self):
         self.dict = {}
         last_timestamp = None
